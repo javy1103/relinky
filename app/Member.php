@@ -2,10 +2,11 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-
-class Member extends Model
+class Member extends Profile
 {
+
+    protected $fillable = ['profile_img'];
+
     public function user() {
         return $this->morphOne('App\User', 'profile');
     }

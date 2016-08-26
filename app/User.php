@@ -26,11 +26,6 @@ class User extends Authenticatable
         return ( Auth::user() && Auth::user()->id == $this->id ) ? true : false ;
     }
 
-    //Getting editable attributes
-    public static function getAttrs() {
-        return [ 'name', 'username', 'email', 'password' ];
-    }
-
     // The attributes that are mass assignable.
     protected $fillable = [
         'name', 'username', 'profile_type', 'email', 'password', 'isActive'

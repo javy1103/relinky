@@ -16,7 +16,7 @@
                         <div class="user_heading" data-uk-sticky="{ top: 48, media: 960 }">
                             <div class="user_heading_avatar fileinput fileinput-new" data-provides="fileinput">
                                 <div class="fileinput-new thumbnail">
-                                    <img id="profile-image" src="{{ Storage::disk('s3')->url($user->profile->profile_img) }}" alt="user avatar"/>
+                                    <img id="profile-image" src="{{ $user->profile->profileImage() }}" alt="user avatar"/>
                                 </div>
 
                                 <div class="fileinput-preview fileinput-exists thumbnail"></div>

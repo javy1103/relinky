@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use Validator;
+use DB;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -51,7 +53,7 @@ class RegisterController extends Controller
             'name' => 'required|max:255',
             'username' => 'required|min:6|unique:users',
             'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
+            'password' => 'required|min:6',
         ]);
     }
 
@@ -63,21 +65,18 @@ class RegisterController extends Controller
     */
     protected function create(array $data)
     {
-        DB::transaction(function(){
-            $username = $data['username'];
-            $this->redirectTo = route('users.edit', ['username' => $username]);
-
+        return DB::transaction(function() use ($data) {
             $profile = isset($data['profile_type']) ? 'App\Agent' : 'App\Member';
             $profile = $profile::create();
-            $user = User::create([
+            $profile->user()->create([
                 'name' => $data['name'],
                 'username' => $data['username'],
                 'email' => $data['email'],
                 'password' => bcrypt($data['password']),
             ]);
-            $profile->save($user);
+            $this->redirectTo = route('users.edit', ['user' => $profile->user]);
+            return $profile->user;
         });
-
-        return $user;
     }
+
 }
