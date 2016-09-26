@@ -18,34 +18,13 @@
                         <a href="#" id="mobile_navigation_toggle" data-uk-offcanvas="{target:'#mobile_navigation'}"><i class="material-icons">&#xE5D2;</i></a>
                         <ul class="uk-navbar-nav" id="main_navigation">
                             <li>
-                                <a href="#sect-overview">
-                                    Overview
+                                <a href="{{ url('register') }}">
+                                    Sign Up
                                 </a>
                             </li>
                             <li>
-                                <a href="#sect-features">
-                                    Features
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#sect-gallery">
-                                    Gallery
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#sect-pricing" class="uk-navbar-nav-subtitle">
-                                    Pricing
-                                    <div>Find the perfect plan</div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#sect-team">
-                                    Team
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#sect-contact">
-                                    Contact
+                                <a href="{{ url('login') }}">
+                                    Login
                                 </a>
                             </li>
                         </ul>
@@ -96,56 +75,7 @@
             </div>
         </div>
 
-        <section class="banner" id="sect-overview">
-            <div data-uk-slideshow="{animation: 'swipe'}" data-uk-parallax="{yp: '25', velocity: '0.4'}">
-                <ul class="uk-slideshow">
-                    <li style="background-image: url('img/slider/car.jpg')">
-                        <div class="uk-container uk-container-center">
-                            <div class="slide_content_a">
-                                <h2 class="slide_header">Slide Heading</h2>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquid aperiam culpa
-                                    dolore enim eos esse harum officia pariatur porro quas quia, quidem saepe similique
-                                    tempora. Maxime molestias odio voluptate.
-                                </p>
-                                <a href="" class="md-btn md-btn-large md-btn-danger">Purchase NOW!</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li style="background-image: url('img/slider/stats.jpg')">
-                        <div class="uk-container uk-container-center">
-                            <div class="slide_content_c">
-                                <h2 class="slide_header">Slide Heading</h2>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, alias animi commodi consequatur doloremque dolorum, eligendi exercitationem id illo illum inventore neque nobis odio perspiciatis quibusdam quis sunt unde voluptatibus?
-                                </p>
-                                <a href="" class="md-btn md-btn-large md-btn-success">CTA Button</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li style="background-image: url('img/slider/paintings.jpg')">
-                        <div class="uk-container uk-container-center">
-                            <div class="slide_content_b">
-                                <h2 class="slide_header">Slide Heading</h2>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, alias animi commodi consequatur doloremque dolorum, eligendi exercitationem id illo illum inventore neque nobis odio perspiciatis quibusdam quis sunt unde voluptatibus?
-                                </p>
-                                <a href="" class="md-btn md-btn-large">CTA Button</a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-                <div class="slide_navigation">
-                    <a href="" class="uk-slidenav uk-slidenav-previous" data-uk-slideshow-item="previous"></a>
-                    <a href="" class="uk-slidenav uk-slidenav-next" data-uk-slideshow-item="next"></a>
-                    <ul class="uk-dotnav uk-dotnav-contrast uk-position-bottom uk-flex-center">
-                        <li data-uk-slideshow-item="0"><a href=""></a></li>
-                        <li data-uk-slideshow-item="1"><a href=""></a></li>
-                        <li data-uk-slideshow-item="2"><a href=""></a></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+        <section style="background-image: url('img/slider/car.jpg')" class="banner" id="sect-overview"></section>
 
         <section class="section section_dark md-bg-indigo-700">
             <div class="uk-container uk-container-center animate" data-uk-scrollspy="{cls:'uk-animation-slide-right animated',target:'> *',delay:300}">

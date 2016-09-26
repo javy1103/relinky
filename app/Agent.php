@@ -9,3 +9,4 @@ class Agent extends Profile
     public function user() {
         return $this->morphOne('App\User', 'profile');
     }
+}
