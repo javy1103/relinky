@@ -18,13 +18,13 @@
                     <a href="#" id="mobile_navigation_toggle" data-uk-offcanvas="{target:'#mobile_navigation'}"><i class="material-icons">&#xE5D2;</i></a>
                     <ul class="uk-navbar-nav" id="main_navigation">
                         <li>
-                            <a href="{}">
-                                Team
+                            <a href="{{url('register')}}">
+                                Sign Up
                             </a>
                         </li>
                         <li>
-                            <a href="#sect-contact">
-                                Contact
+                            <a href="{{url('login')}}">
+                                Login
                             </a>
                         </li>
                     </ul>
@@ -77,19 +77,20 @@
 
     <section style="background-image: url('img/slider/car.jpg')" class="banner" id="sect-overview">
         <div class="uk-grid uk-grid-width-1-1">
-            <div>
+            <div class="search-form">
                 <div class="md-card">
                     <div class="md-card-toolbar">
                         <div class="md-card-toolbar-actions">
                             <ul class="uk-tab" data-uk-tab="{connect:'#card_tabs',animation:'slide-horizontal'}">
-                                <li class="uk-active" aria-expanded="true"><a href="#">Rent</a></li>
-                                <li aria-expanded="false" class=""><a href="#">Buy</a></li>
-                                <li aria-expanded="false" class=""><a href="#">Agents</a></li>
+                                <li class="uk-active" aria-expanded="true"><a href="#">Buy</a></li>
+                                <li aria-expanded="false" class=""><a href="#">Rent</a></li>
+                                <li aria-expanded="false" class=""><a href="#">Sell</a></li>
+                                <li aria-expanded="false" class=""><a href="#">Find an Agent</a></li>
                             </ul>
                         </div>
-                        <h3 class="md-card-toolbar-heading-text">
-                            Search for:
-                        </h3>
+                        <h2 class="md-card-toolbar-heading-text">
+                            Looking to:
+                        </h2>
                     </div>
                     <div class="md-card-content">
                         <ul id="card_tabs" class="uk-switcher uk-margin">
@@ -97,15 +98,48 @@
                                 <div class="uk-grid">
                                     <div class="uk-width-large-1-1 uk-width-1-1">
                                         <div class="uk-input-group">
-                                            <span class="uk-input-group-addon"><i class="uk-input-group-icon uk-icon-calendar"></i></span>
-                                            <div class="md-input-wrapper"><label for="uk_dp_1">Select date</label><input class="md-input" type="text" id="uk_dp_1" data-uk-datepicker="{format:'DD.MM.YYYY'}"><span class="md-input-bar "></span></div>
-
+                                            <span class="uk-input-group-addon"><i class="uk-input-group-icon uk-icon-search"></i></span>
+                                            <div class="md-input-wrapper"><input class="md-input" type="text" id="rent" placeholder="Enter address, city, or zipcode"></div>
                                         </div>
                                     </div>
                                 </div>
                             </li>
-                            <li aria-hidden="true" class="" style="animation-duration: 200ms;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquam animi aspernatur dolore dolorem doloribus eius fugiat id impedit ipsum nam nemo, nisi nulla obcaecati odio officiis placeat quasi quia repellat tempore veritatis vero, voluptas? Facilis incidunt odit quam similique.</li>
-                            <li aria-hidden="true" class="" style="animation-duration: 200ms;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias amet atque beatae consequuntur delectus deleniti dolor eaque eligendi enim, et eum, exercitationem fugit, harum ipsam iure minus necessitatibus neque officiis optio quaerat quam quasi recusandae vitae voluptas voluptates? Ad aspernatur atque autem beatae, blanditiis cupiditate debitis doloribus et excepturi laborum magnam porro praesentium quae quaerat quisquam sapiente sint? Dicta, fugiat!</li>
+                            <li aria-hidden="true" class="" style="animation-duration: 200ms;">
+                                <div class="uk-grid">
+                                    <div class="uk-width-large-1-1 uk-width-1-1">
+                                        <div class="uk-input-group">
+                                            <span class="uk-input-group-addon"><i class="uk-input-group-icon uk-icon-search"></i></span>
+                                            <div class="md-input-wrapper">
+                                                <input class="md-input" type="text" id="buy" placeholder="Enter address, city, or zipcode">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li aria-hidden="true" class="" style="animation-duration: 200ms;">
+                                <div class="uk-grid">
+                                    <div class="uk-width-large-1-1 uk-width-1-1">
+                                        <div class="uk-input-group">
+                                            <span class="uk-input-group-addon"><i class="uk-input-group-icon uk-icon-search"></i></span>
+                                            <div class="md-input-wrapper">
+                                                <input class="md-input" type="text" id="buy" placeholder="Enter address, city, or zipcode">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li aria-hidden="true" class="" style="animation-duration: 200ms;">
+                                <div class="uk-grid">
+                                    <div class="uk-width-large-1-1 uk-width-1-1">
+                                        <div class="uk-input-group">
+                                            <span class="uk-input-group-addon"><i class="uk-input-group-icon uk-icon-search"></i></span>
+                                            <div class="md-input-wrapper">
+                                                <input class="md-input" type="text" id="agent" placeholder="Enter name, city, or zipcode">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                 </div>
