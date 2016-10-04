@@ -398,8 +398,19 @@ a {
     float: none;
 }
 
+.login-modal {
+    .md-input {
+        -webkit-box-shadow: inset 0 0 0px 9999px white !important;
+    }
+}
+
 // media queries
-@media @screen_xlarge_max {
+@media @screen_xlarge {
+
+    .login-modal {
+        width: 400px;
+    }
+
     .banner {
         .uk-slideshow {
             &,
@@ -439,6 +450,11 @@ a {
     }
 }
 @media @screen_large_max {
+
+    .login-modal {
+        width: 400px;
+    }
+
     #header_main {
         height: @header_main_mobile_height;
         .uk-navbar-brand {

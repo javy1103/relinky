@@ -5931,7 +5931,13 @@ a:active {
 [class*=uk-width].uk-container-center {
   float: none;
 }
-@media only screen and (max-width: 1219px) {
+.login-modal .md-input {
+  -webkit-box-shadow: inset 0 0 0px 9999px white !important;
+}
+@media only screen and (min-width: 1220px) {
+  .login-modal {
+    width: 400px;
+  }
   .banner .uk-slideshow,
   .banner .uk-slideshow > li {
     height: auto;
@@ -5963,6 +5969,9 @@ a:active {
   }
 }
 @media only screen and (max-width: 959px) {
+  .login-modal {
+    width: 400px;
+  }
   #header_main {
     height: 48px;
   }
