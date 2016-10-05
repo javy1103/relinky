@@ -15,18 +15,29 @@ class CreateListingsTable extends Migration
     {
         Schema::create('listings', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('Address');
-            $table->string('Address 2');
-            $table->foreign('city_id')->references('id')->on('cities');
-            $table->integer('zipcode');
-            $table->char('State', 2);
-            $table->smallInteger('year_built');
-            $table->smallInteger('sqft');
-            $table->tinyInteger('beds');
-            $table->tinyInteger('baths');
-            $table->integer('price');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('address');
+            $table->string('address_2');
+            $table->integer('city_id')->unsigned();
+            $table->integer('zipcode')->unsigned();
+            $table->char('state', 2);
+            $table->text('description');
+            $table->date('available_date')->nullable();
+            $table->tinyInteger('listing_type_id');
+            $table->string('contract_type');
+            $table->smallInteger('year_built')->unsigned();
+            $table->smallInteger('sqft')->unsigned();
+            $table->tinyInteger('beds')->unsigned();
+            $table->tinyInteger('baths')->unsigned();
+            $table->integer('price')->unsigned();
+            $table->string('price_suffix')->nullable();
+            $table->integer('user_id');
             $table->timestamps();
+        });
+
+        Schema::table('listings', function($table) {
+            $table->foreign('city_id')->references('id')->on('cities');
+            $table->foreign('listing_type_id')->references('id')->on('property_types');
+            $table->foreign('user_id')->references('id')->on('users');
         });
 
         DB::statement('ALTER TABLE listings ADD searchable tsvector NULL');
