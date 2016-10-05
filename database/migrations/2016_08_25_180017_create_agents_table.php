@@ -26,6 +26,9 @@ class CreateAgentsTable extends Migration
             $table->json('specialties')->nullable();
             $table->timestamps();
         });
+
+        DB::statement('ALTER TABLE agents ADD searchable tsvector NULL');
+        DB::statement('CREATE INDEX agents_searchable_index ON agents USING GIN (searchable)');
     }
 
     /**

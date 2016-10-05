@@ -24,6 +24,10 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+        DB::statement('ALTER TABLE users ADD searchable tsvector NULL');
+        DB::statement('CREATE INDEX users_searchable_index ON users USING GIN (searchable)');
+
     }
 
     /**
