@@ -3,15 +3,24 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
+use Laravel\Scout\Searchable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Auth;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use Searchable;
 
     public function getRouteKeyName() {
         return 'username';
+    }
+
+    public function toSearchableArray()
+    {
+        return [
+            'name' => $this->name,
+        ];
     }
 
     //load profile realtion
