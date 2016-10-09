@@ -5780,6 +5780,7 @@ a:active {
   height: 600px;
   color: #fff;
   position: relative;
+  background-size: cover;
 }
 .banner .uk-input-group {
   position: relative;
@@ -5811,7 +5812,7 @@ a:active {
 }
 .banner .md-card {
   margin: 250px auto;
-  width: 50%;
+  width: 35%;
   background: none;
   border-radius: 5px;
   zoom: 1.1;
@@ -5823,30 +5824,13 @@ a:active {
   background-color: rgba(33, 150, 244, 0.73);
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  padding: 0 0 0 16px;
 }
-.banner .md-card-toolbar .md-card-toolbar-heading-text {
+.banner .md-card-toolbar .md-card-heading-text {
   color: #fff;
   font: italic 300 18px / 50px "Roboto", sans-serif;
-}
-.banner .md-card-toolbar .md-card-toolbar-actions {
-  padding: 0;
-}
-.banner .md-card-toolbar .uk-tab {
   margin: 0;
-  border: none;
-}
-.banner .md-card-toolbar .uk-tab li:nth-last-child(2) {
-  border-top-right-radius: 5px;
-}
-.banner .md-card-toolbar .uk-tab li.uk-active {
-  background-color: #004d8b;
-  border: none;
-}
-.banner .md-card-toolbar .uk-tab li a {
-  color: #fff;
-  padding: 15px 12px !important;
-  border: none;
+  overflow: hidden;
+  height: 48px;
 }
 .banner .md-card-content {
   border-bottom-left-radius: 5px;

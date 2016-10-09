@@ -237,6 +237,7 @@ a {
     height: 600px;
     color: @white;
     position: relative;
+    background-size: cover;
     .uk-input-group {
         position: relative;
         display: table;
@@ -263,7 +264,7 @@ a {
     }
     .md-card {
         margin: 250px auto;
-        width: 50%;
+        width: 35%;
         background: none;
         border-radius: 5px;
         zoom: 1.1;
@@ -275,31 +276,12 @@ a {
         background-color: rgba(33, 150, 244, 0.73);
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
-        padding: 0 0 0 16px;
-        .md-card-toolbar-heading-text {
+        .md-card-heading-text {
             color: @white;
             font: italic 300 18px / 50px "Roboto", sans-serif;
-        }
-        .md-card-toolbar-actions {
-            padding: 0;
-        }
-        .uk-tab {
             margin: 0;
-            border: none;
-            li {
-                &:nth-last-child(2) {
-                    border-top-right-radius: 5px;
-                }
-                &.uk-active {
-                    background-color: #004d8b;
-                    border: none;
-                }
-                a {
-                    color: @white;
-                    padding: 15px 12px !important;
-                    border: none;
-                }
-            }
+            overflow: hidden;
+            height: 48px;
         }
     }
     .md-card-content {

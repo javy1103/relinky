@@ -22,8 +22,3 @@ Route::post('/users/{username}', 'UsersController@uploadFile');
 
 // Route::model('users', 'App\User');
 Route::resource('users', 'UsersController', ['except' => [ 'create', 'store' ]]);
-Route::get('/all-users', function() {
-    return App\User::search('Javier')->get();
-});
-Route::post('/search-rent', 'ListingsController@searchRent');
-Route::post('/search-buy', 'ListingsController@searchBuy');
