@@ -11,8 +11,8 @@
     <header id="header_main">
         <nav class="uk-navbar">
             <div class="uk-container uk-container-center">
-                <a href="" class="uk-navbar-brand">
-                    <img src="img/logo_main.png" alt="" width="71" height="15">
+                <a href="{{ url('/') }}" class="uk-navbar-brand">
+                    Relinky
                 </a>
                 <div class="uk-navbar-flip">
                     <a href="#" id="mobile_navigation_toggle" data-uk-offcanvas="{target:'#mobile_navigation'}"><i class="material-icons">&#xE5D2;</i></a>
@@ -24,7 +24,7 @@
                         </li>
                         <li>
                             <a href="#login_modal" data-uk-modal>
-                                Login
+                                Log In
                             </a>
                         </li>
                     </ul>
@@ -575,8 +575,7 @@
     </div>
 </div>
 </section>
-
-<div class="uk-modal" id="login_modal" aria-hidden="true" style="display: none; overflow-y: auto;">
+<div class="uk-modal {{ count($errors) > 0 ? 'uk-open' : '' }}" id="login_modal">
     <div class="uk-modal-dialog login-modal">
         <button type="button" class="uk-modal-close uk-close"></button>
         @include('shared.login_form')

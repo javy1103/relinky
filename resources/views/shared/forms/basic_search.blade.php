@@ -19,8 +19,13 @@
                     <div class="uk-grid">
                         <div class="uk-width-large-1-1 uk-width-1-1">
                             <div class="uk-input-group">
-                                <span class="uk-input-group-addon"><i class="uk-input-group-icon uk-icon-search"></i></span>
-                                <div class="md-input-wrapper"><input class="md-input" type="text" id="rent" placeholder="Enter address, city, or zipcode"></div>
+                                <span class="uk-input-group-addon">
+                                    <i class="uk-input-group-icon uk-icon-search"></i>
+                                </span>
+                                <form method="POST" action="{!! action('ListingsController@searchBuy') !!}" class="md-input-wrapper">
+                                    {{ csrf_field() }}
+                                    <input class="md-input" name="buy" type="text" id="buy" placeholder="Enter address, city, or zipcode">
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -29,10 +34,28 @@
                     <div class="uk-grid">
                         <div class="uk-width-large-1-1 uk-width-1-1">
                             <div class="uk-input-group">
-                                <span class="uk-input-group-addon"><i class="uk-input-group-icon uk-icon-search"></i></span>
-                                <div class="md-input-wrapper">
+                                <span class="uk-input-group-addon">
+                                    <i class="uk-input-group-icon uk-icon-search"></i>
+                                </span>
+                                <form method="POST" action="{!! action('ListingsController@searchRent') !!}" class="md-input-wrapper">
+                                    {{ csrf_field() }}
+                                    <input class="md-input" name="rent" type="text" id="rent" placeholder="Enter address, city, or zipcode">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li aria-hidden="true" class="" style="animation-duration: 200ms;">
+                    <div class="uk-grid">
+                        <div class="uk-width-large-1-1 uk-width-1-1">
+                            <div class="uk-input-group">
+                                <span class="uk-input-group-addon">
+                                    <i class="uk-input-group-icon uk-icon-search"></i>
+                                </span>
+                                <form method="POST" class="md-input-wrapper">
+                                    {{ csrf_field() }}
                                     <input class="md-input" type="text" id="buy" placeholder="Enter address, city, or zipcode">
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -41,22 +64,13 @@
                     <div class="uk-grid">
                         <div class="uk-width-large-1-1 uk-width-1-1">
                             <div class="uk-input-group">
-                                <span class="uk-input-group-addon"><i class="uk-input-group-icon uk-icon-search"></i></span>
-                                <div class="md-input-wrapper">
-                                    <input class="md-input" type="text" id="buy" placeholder="Enter address, city, or zipcode">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li aria-hidden="true" class="" style="animation-duration: 200ms;">
-                    <div class="uk-grid">
-                        <div class="uk-width-large-1-1 uk-width-1-1">
-                            <div class="uk-input-group">
-                                <span class="uk-input-group-addon"><i class="uk-input-group-icon uk-icon-search"></i></span>
-                                <div class="md-input-wrapper">
-                                    <input class="md-input" type="text" id="agent" placeholder="Enter name, city, or zipcode">
-                                </div>
+                                <span class="uk-input-group-addon">
+                                    <i class="uk-input-group-icon uk-icon-search"></i>
+                                </span>
+                                <form method="POST" class="md-input-wrapper">
+                                    {{ csrf_field() }}
+                                    <input class="md-input" name="agent" type="text" id="agent" placeholder="Enter name, city, or zipcode">
+                                </form>
                             </div>
                         </div>
                     </div>
