@@ -18,5 +18,10 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:api');
 
 Route::get('/languages', function(App\Language $language) {
-  return response($language->all()->toJson(), 200);
+    return response($language->all()->toJson(), 200);
+});
+
+Route::post('/cities', function( Request $request, App\City $city ) {
+    $cities = $city->where('city', 'ILIKE', "$request->keyword%")->get();
+    return response($cities->toJson(), 200);
 });

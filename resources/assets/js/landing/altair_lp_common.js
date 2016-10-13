@@ -1,9 +1,9 @@
 
 // variables
 var $body = $('body'),
-    header_main_height = $('#header_main').height(),
-    easing_swiftOut = [ 0.35,0,0.25,1 ];
-    bez_easing_swiftOut = $.bez(easing_swiftOut);
+header_main_height = $('#header_main').height(),
+easing_swiftOut = [ 0.35,0,0.25,1 ];
+bez_easing_swiftOut = $.bez(easing_swiftOut);
 
 $(function() {
 
@@ -65,15 +65,132 @@ altair_header_main = {
 };
 
 altair_md = {
+
     init: function () {
+
         altair_md.inputs();
+
+        altair_md.keywordSelect();
+
+        let marginTop = ( $('.banner').outerHeight( true ) / 2 ) - $('.search-form').outerHeight( true )
+
+        $('.search-form').css({ "margin-top": marginTop })
+
     },
+
+    keywordSelect() {
+        var $price_select, price_select, rent_prices = [], buy_prices = []
+
+        $('.keyword-select').selectize({
+            valueField: 'city',
+            labelField: 'city',
+            searchField: 'city',
+            maxItems: 1,
+            loadThrottle: 300,
+            render: {
+                option: function(item, escape) {
+                    return  `<div>
+                    <span class="city">
+                    <span class="name">${escape(item.city)}</span>
+                    <input style="display: none;" name="keyword" value="${escape(item.city)}" />
+                    </span>
+                    </div>`;
+                }
+            },
+            load: function(query, callback) {
+                if (!query.length) return callback();
+                $.ajax({
+                    url: 'api/cities',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        keyword: query,
+                    },
+                    error: function() {
+                        callback();
+                    },
+                    success: function(res) {
+                        callback(res);
+                    }
+                })
+            }
+        })
+
+        $('.type-select').selectize({
+            valueField: "value",
+            labelField: "name",
+            searchField: "name",
+            options: [
+                { name: "Rent", value: "rent" },
+                { name: "Buy", value: "buy" }
+            ],
+            render: {
+                option(item, escape) {
+                    return  `<div>
+                    <span class="type">
+                    <span class="name">${escape(item.name)}</span>
+                    <input style="display: none;" name="type" value="${escape(item.value)}" />
+                    </span>
+                    </div>`;
+                }
+            },
+            onChange(value) {
+                if( value === "rent" ) {
+                    for (var i = 500; i <= 3000; i = i + 250) {
+                        rent_prices.push({ value: i })
+                    }
+                    price_select.clearOptions()
+                    price_select.addOption(rent_prices)
+                    price_select.enable()
+                } else {
+                    let i = 50000, increment = 25000
+                    while (i < 500000) {
+                        buy_prices.push({ value: i })
+                        if( i % 3 == 4 ) {
+                            increment += increment
+                        }
+                        i += increment
+                    }
+
+                    console.log(buy_prices);
+
+                    price_select.clearOptions()
+                    price_select.addOption(buy_prices)
+                    price_select.enable()
+                }
+            }
+        })
+
+        $price_select = $('.price-select').selectize({
+            valueField: 'value',
+            labelField: 'value',
+            searchField: ['value'],
+            options: [],
+            render: {
+                option(item, escape) {
+                    return  `<div>
+                    <span class="type">
+                    <span class="name">$${escape(item.value)}+</span>
+                    <input style="display: none;" name="price" value="${escape(item.value)}" />
+                    </span>
+                    </div>`;
+                }
+            },
+        })
+
+        price_select = $price_select[0].selectize
+
+        price_select.disable()
+
+    },
+
     inputs: function(parent) {
+
         var $mdInput = (typeof parent === 'undefined') ? $('.md-input') : $(parent).find('.md-input');
         $mdInput.each(function() {
             if(!$(this).closest('.md-input-wrapper').length) {
                 var $this = $(this),
-                    extraClass = '';
+                extraClass = '';
 
                 if($this.is('[class*="uk-form-width-"]')) {
                     var elClasses = $this.attr('class').split (' ');
@@ -97,22 +214,22 @@ altair_md = {
                 altair_md.update_input($this);
             }
             $('body')
-                .on('focus', '.md-input', function() {
-                    $(this).closest('.md-input-wrapper').addClass('md-input-focus')
-                })
-                .on('blur', '.md-input', function() {
-                    $(this).closest('.md-input-wrapper').removeClass('md-input-focus');
-                    if(!$(this).hasClass('label-fixed')) {
-                        if($(this).val() != '') {
-                            $(this).closest('.md-input-wrapper').addClass('md-input-filled')
-                        } else {
-                            $(this).closest('.md-input-wrapper').removeClass('md-input-filled')
-                        }
+            .on('focus', '.md-input', function() {
+                $(this).closest('.md-input-wrapper').addClass('md-input-focus')
+            })
+            .on('blur', '.md-input', function() {
+                $(this).closest('.md-input-wrapper').removeClass('md-input-focus');
+                if(!$(this).hasClass('label-fixed')) {
+                    if($(this).val() != '') {
+                        $(this).closest('.md-input-wrapper').addClass('md-input-filled')
+                    } else {
+                        $(this).closest('.md-input-wrapper').removeClass('md-input-filled')
                     }
-                })
-                .on('change', '.md-input', function() {
-                    altair_md.update_input($(this));
-                });
+                }
+            })
+            .on('change', '.md-input', function() {
+                altair_md.update_input($(this));
+            });
         })
     },
     update_input: function(object) {
