@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,3 +24,6 @@ Route::post('/users/{username}', 'UsersController@uploadFile');
 
 // Route::model('users', 'App\User');
 Route::resource('users', 'UsersController', ['except' => [ 'create', 'store' ]]);
+Route::post('/search', function( Request $request ) {
+    dd($request->all());
+});

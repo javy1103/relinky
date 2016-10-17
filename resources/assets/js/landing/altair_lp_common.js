@@ -136,51 +136,81 @@ altair_md = {
             },
             onChange(value) {
                 if( value === "rent" ) {
-                    for (var i = 500; i <= 3000; i = i + 250) {
+                    for (let i = 500; i <= 3000; i = i + 250) {
                         rent_prices.push({ value: i })
                     }
-                    price_select.clearOptions()
-                    price_select.addOption(rent_prices)
-                    price_select.enable()
+                    min_price_select.clearOptions()
+                    min_price_select.addOption(rent_prices)
+                    min_price_select.enable()
                 } else {
                     let i = 50000, increment = 25000
-                    while (i < 500000) {
+                    while (i < 750000) {
                         buy_prices.push({ value: i })
-                        if( i % 3 == 4 ) {
-                            increment += increment
+                        if( i === 500000 ) {
+                            increment *= 2
                         }
                         i += increment
                     }
-
-                    console.log(buy_prices);
-
-                    price_select.clearOptions()
-                    price_select.addOption(buy_prices)
-                    price_select.enable()
+                    min_price_select.clearOptions()
+                    min_price_select.addOption(buy_prices)
+                    min_price_select.enable()
                 }
             }
         })
 
-        $price_select = $('.price-select').selectize({
+        $min_price_select = $('.min-price-select').selectize({
             valueField: 'value',
             labelField: 'value',
             searchField: ['value'],
+            persist: false,
+            createOnBlur: true,
+            create: true,
             options: [],
             render: {
+                option_create: function(data, escape) {
+                    return '';
+                },
                 option(item, escape) {
                     return  `<div>
                     <span class="type">
                     <span class="name">$${escape(item.value)}+</span>
-                    <input style="display: none;" name="price" value="${escape(item.value)}" />
+                    <input style="display: none;" name="min-price" value="${escape(item.value)}" />
+                    </span>
+                    </div>`;
+                }
+            },
+            onChange( value ) {
+                
+            }
+        })
+
+        $max_price_select = $('.max-price-select').selectize({
+            valueField: 'value',
+            labelField: 'value',
+            searchField: ['value'],
+            persist: false,
+            createOnBlur: true,
+            create: true,
+            options: [],
+            render: {
+                option_create: function(data, escape) {
+                    return '';
+                },
+                option(item, escape) {
+                    return  `<div>
+                    <span class="type">
+                    <span class="name">$${escape(item.value)}</span>
+                    <input style="display: none;" name="max-price" value="${escape(item.value)}" />
                     </span>
                     </div>`;
                 }
             },
         })
 
-        price_select = $price_select[0].selectize
-
-        price_select.disable()
+        min_price_select = $min_price_select[0].selectize
+        min_price_select.disable()
+        max_price_select = $max_price_select[0].selectize
+        max_price_select.disable()
 
     },
 
