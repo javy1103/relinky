@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', function () {
+
     if( Auth::check() ) return redirect('dashboard');
     return view('pages.welcome');
 });

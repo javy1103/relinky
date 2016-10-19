@@ -3,7 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Auth;
+use Illuminate\Support\Facades\Cache;
+use DB;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,8 +15,11 @@ class AppServiceProvider extends ServiceProvider
     */
     public function boot()
     {
+        DB::listen(function ($query) {
+            dd($query);
+        });
         view()->composer('layouts.dashboard', function($view) {
-            $view->with('user', Auth::user());
+            $view->with('user', Cache::get('user'));
         });
     }
 
