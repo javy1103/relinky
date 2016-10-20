@@ -15,9 +15,6 @@ class AppServiceProvider extends ServiceProvider
     */
     public function boot()
     {
-        DB::listen(function ($query) {
-            dd($query);
-        });
         view()->composer('layouts.dashboard', function($view) {
             $view->with('user', Cache::get('user'));
         });
