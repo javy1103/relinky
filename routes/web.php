@@ -14,7 +14,6 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', function () {
-
     if( Auth::check() ) return redirect('dashboard');
     return view('pages.welcome');
 });
@@ -25,6 +24,4 @@ Route::post('/users/{username}', 'UsersController@uploadFile');
 
 // Route::model('users', 'App\User');
 Route::resource('users', 'UsersController', ['except' => [ 'create', 'store' ]]);
-Route::post('/search', function( Request $request ) {
-    dd($request->all());
-});
+Route::post('/search/agent', 'SearchController@searchAgent');

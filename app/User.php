@@ -26,7 +26,7 @@ class User extends Authenticatable
     //load profile realtion
     protected $with = ['profile'];
 
-    public function toggleAcct($input) {
+    public function toggleAcct( $input ) :boolean {
         return $this->update(['isActive' => $input]);
     }
 
