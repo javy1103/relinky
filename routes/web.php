@@ -21,7 +21,5 @@ Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('/dashboard', 'UsersController@dashboard');
 Route::post('/users/{username}', 'UsersController@uploadFile');
-
-// Route::model('users', 'App\User');
 Route::resource('users', 'UsersController', ['except' => [ 'create', 'store' ]]);
 Route::post('/search/agent', 'SearchController@searchAgent');

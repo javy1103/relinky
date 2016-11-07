@@ -11,8 +11,16 @@
         <link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32">
         <link href="/css/uikit-flat.css" rel="stylesheet" type="text/css">
         @yield('head')
+
     </head>
-
+    <body>
+        <div id="app">
+            <example></example>
+        </div>
         @yield('content')
-
+    </body>
+    <script src="js/app.js"></script>
+    <script>
+        window.Laravel = { csrfToken: '{{ csrf_token() }}' };
+    </script>
 </html>

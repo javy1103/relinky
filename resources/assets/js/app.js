@@ -15,6 +15,8 @@ require('./bootstrap');
 
 Vue.component('example', require('./components/Example.vue'));
 
-const app = new Vue({
-    el: 'body'
-});
+window.onload = function() {
+    const app = new Vue({
+        el: '#app'
+    })
+}
